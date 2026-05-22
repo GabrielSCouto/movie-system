@@ -1,3 +1,5 @@
+import re
+
 from app.utils.srt_utils import is_translatable_text_line, validate_srt_content
 
 
@@ -6,15 +8,14 @@ def mock_translate_text(text: str, source_language: str, target_language: str) -
     Simula a traducao de texto com substituicoes simples de palavras.
     Esta funcao existe apenas para o MVP e sera trocada por IA real no futuro.
     """
-
     # TODO: substituir esta função mockada por integração real com IA, como OpenAI, Gemini, Whisper ou outro modelo.
     _ = source_language
     _ = target_language
 
-    phrase_replacements = {
-        "to the": "ao",
-        "To the": "Ao",
-    }
+     # Isso é apenas um caso de Teste.
+    phrase_patterns = (
+        (re.compile(r"\bto\s+the\b", flags=re.IGNORECASE), "ao"),
+    )
 
     replacements = {
         "Hello": "Olá",
@@ -32,8 +33,8 @@ def mock_translate_text(text: str, source_language: str, target_language: str) -
     }
 
     translated = text
-    for source_phrase, target_phrase in phrase_replacements.items():
-        translated = translated.replace(source_phrase, target_phrase)
+    for pattern, replacement in phrase_patterns:
+        translated = pattern.sub(replacement, translated)
 
     for source_word, target_word in replacements.items():
         translated = translated.replace(source_word, target_word)
