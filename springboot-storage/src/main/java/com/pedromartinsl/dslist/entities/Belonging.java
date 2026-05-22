@@ -10,20 +10,20 @@ import jakarta.persistence.Table;
 @Table(name = "tb_belonging")
 public class Belonging {
 	@EmbeddedId
-	private BelongingPK id = new BelongingPK();
+	private final BelongingPK id = new BelongingPK();
     
 	private Integer position;
 
-	public void setGame(Game game) {
-		id.setGame(game);
+	public void setMovie(Movie movie) {
+		id.setMovie(movie);
 	}
-	public Game getGame() {
-		return id.getGame();
+	public Movie getMovie() {
+		return id.getMovie();
 	}
-	public void setList(GameList list) {
+	public void setList(MovieList list) {
 		id.setList(list);
 	}
-	public GameList getList() {
+	public MovieList getList() {
 		return id.getList();
 	}
 	public Integer getPosition() {

@@ -1,20 +1,20 @@
 package com.pedromartinsl.dslist.dto;
 
-import com.pedromartinsl.dslist.entities.Game;
-import com.pedromartinsl.dslist.projections.GameMinProjection;
+import com.pedromartinsl.dslist.entities.Movie;
+import com.pedromartinsl.dslist.projections.MovieMinProjection;
 
-public class GameMinDTO {
+public class MovieMinDTO {
     private Long id;
 	private String title;
 	private Integer year;
 	private String imgUrl;
 	private String shortDescription;
 
-    public GameMinDTO() {
+    public MovieMinDTO() {
 
     }
 
-    public GameMinDTO(Game entity) {
+    public MovieMinDTO(Movie entity) {
 		id = entity.getId();
 		title = entity.getTitle();
 		year = entity.getYear();
@@ -22,10 +22,10 @@ public class GameMinDTO {
 		shortDescription = entity.getShortDescription();
 	}
 
-	public GameMinDTO(GameMinProjection projection) {
+	public MovieMinDTO(MovieMinProjection projection) {
 		id = projection.getId();
 		title = projection.getTitle();
-		year = projection.getGameYear();
+		year = projection.getMovieYear();
 		imgUrl = projection.getImgUrl();
 		shortDescription = projection.getShortDescription();
 	}

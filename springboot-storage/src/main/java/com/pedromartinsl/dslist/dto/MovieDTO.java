@@ -1,10 +1,8 @@
 package com.pedromartinsl.dslist.dto;
 
-import org.springframework.beans.BeanUtils;
+import com.pedromartinsl.dslist.entities.Movie;
 
-import com.pedromartinsl.dslist.entities.Game;
-
-public class GameDTO {
+public class MovieDTO {
     
     private Long id;
 	private String title;
@@ -16,9 +14,18 @@ public class GameDTO {
 	private String shortDescription;
 	private String longDescription;
 	
-	public GameDTO(Game entity) {
-		BeanUtils.copyProperties(entity, this);
+	public MovieDTO(Movie entity) {
+		this.id = entity.getId();
+		this.title = entity.getTitle();
+		this.year = entity.getYear();
+		this.genre = entity.getGenre();
+		this.platforms = entity.getPlatforms();
+		this.score = entity.getScore();
+		this.imgUrl = entity.getImgUrl();
+		this.shortDescription = entity.getShortDescription();
+		this.longDescription = entity.getLongDescription();
 	}
+	
 	public Long getId() {
 		return id;
 	}

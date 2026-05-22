@@ -10,32 +10,32 @@ import jakarta.persistence.ManyToOne;
 public class BelongingPK {
 
 	@ManyToOne
-	@JoinColumn(name = "game_id")
-	private Game game;
+	@JoinColumn(name = "movie_id")
+	private Movie movie;
 	
 	@ManyToOne
 	@JoinColumn(name = "list_id")
-	private GameList list;
+	private MovieList list;
 
-	public Game getGame() {
-		return game;
+	public Movie getMovie() {
+		return movie;
 	}
 
-	public void setGame(Game game) {
-		this.game = game;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
-	public GameList getList() {
+	public MovieList getList() {
 		return list;
 	}
 
-	public void setList(GameList list) {
+	public void setList(MovieList list) {
 		this.list = list;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(game, list);
+		return Objects.hash(movie, list);
 	}
 
 	@Override
@@ -47,6 +47,6 @@ public class BelongingPK {
 		if (getClass() != obj.getClass())
 			return false;
 		BelongingPK other = (BelongingPK) obj;
-		return Objects.equals(game, other.game) && Objects.equals(list, other.list);
+		return Objects.equals(movie, other.movie) && Objects.equals(list, other.list);
 	}
 }

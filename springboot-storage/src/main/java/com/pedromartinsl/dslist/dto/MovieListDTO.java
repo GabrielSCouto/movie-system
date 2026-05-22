@@ -1,12 +1,12 @@
 package com.pedromartinsl.dslist.dto;
 
-import com.pedromartinsl.dslist.entities.GameList;
+import com.pedromartinsl.dslist.entities.MovieList;
 
-public class GameListDTO {
-    private Long id;
-	private String name;
+public class MovieListDTO {
+    private final Long id;
+	private final String name;
 	
-	public GameListDTO(GameList entity) {
+	public MovieListDTO(MovieList entity) {
 		id = entity.getId();
 		name = entity.getName();
 	}

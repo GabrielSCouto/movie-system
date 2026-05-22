@@ -1,10 +1,10 @@
 package com.pedromartinsl.dslist.projections;
 
-public interface GameMinProjection {
+public interface MovieMinProjection {
 
     Long getId();
     String getTitle();
-    Integer getGameYear();
+    Integer getMovieYear();
     String getImgUrl();
     String getShortDescription();
     Integer getPosition();

@@ -10,14 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_game")
-public class Game {
+@Table(name = "tb_movie")
+public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	
-	@Column(name = "game_year")
+	@Column(name = "movie_year")
 	private Integer year;
 	private String genre;
 	private String platforms;
@@ -29,10 +29,10 @@ public class Game {
 	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-    public Game() {
+    public Movie() {
     }
     
-	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
+	public Movie(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
@@ -110,7 +110,7 @@ public class Game {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Game other = (Game) obj;
+		Movie other = (Movie) obj;
 		return Objects.equals(id, other.id);
 	}
 }

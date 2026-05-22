@@ -10,36 +10,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pedromartinsl.dslist.dto.GameListDTO;
-import com.pedromartinsl.dslist.dto.GameMinDTO;
+import com.pedromartinsl.dslist.dto.MovieListDTO;
+import com.pedromartinsl.dslist.dto.MovieMinDTO;
 import com.pedromartinsl.dslist.dto.ReplacementDTO;
-import com.pedromartinsl.dslist.services.GameListService;
-import com.pedromartinsl.dslist.services.GameService;
+import com.pedromartinsl.dslist.services.MovieService;
+import com.pedromartinsl.dslist.services.MovieListService;
 
 @RestController
 @RequestMapping(value = "/lists")
-public class GameListController {
+public class MovieListController {
 
 	@Autowired
-	private GameListService gameListService;
+	private MovieListService movieListService;
 	
 	@Autowired
-	private GameService gameService;
+	private MovieService movieService;
 
 	@GetMapping
-	public List<GameListDTO> findAll() {
-		List<GameListDTO> result = gameListService.findAll();
+	public List<MovieListDTO> findAll() {
+		List<MovieListDTO> result = movieListService.findAll();
 		return result;
 	}
 
-	@GetMapping(value = "/{listId}/games")
-	public List<GameMinDTO> findGames(@PathVariable Long listId) {
-		List<GameMinDTO> result = gameService.findByGameList(listId);
+	@GetMapping(value = "/{listId}/movies")
+	public List<MovieMinDTO> findGames(@PathVariable Long listId) {
+		List<MovieMinDTO> result = movieService.findByMovieList(listId);
 		return result;
 	}
 
 	@PostMapping(value = "/{listId}/replacement")
 	public void move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
-		gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
+		movieListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
 	}
 }
