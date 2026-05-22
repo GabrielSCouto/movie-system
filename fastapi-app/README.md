@@ -123,6 +123,24 @@ Resposta de exemplo:
 - Nome padrao: `{movie_id}_{target_language}.srt`
 - Exemplo: `movie-001_pt-BR.srt`
 
+## Testes automatizados
+
+Os testes usam `pytest` e validam:
+
+- health check (`GET /ai/health`)
+- traducao com sucesso (`POST /ai/translate-subtitle`)
+- retorno de erro para SRT invalido
+
+Para executar:
+
+```powershell
+pytest -q
+```
+
+Arquivo de testes:
+
+- `tests/test_ai_routes.py`
+
 ## Sobre a traducao de IA
 
 A traducao esta mockada por enquanto, pela funcao `mock_translate_text`.

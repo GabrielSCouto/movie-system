@@ -6,6 +6,11 @@ def mock_translate_text(text: str, source_language: str, target_language: str) -
     _ = source_language
     _ = target_language
 
+    phrase_replacements = {
+        "to the": "ao",
+        "To the": "Ao",
+    }
+
     replacements = {
         "Hello": "Olá",
         "hello": "olá",
@@ -22,6 +27,9 @@ def mock_translate_text(text: str, source_language: str, target_language: str) -
     }
 
     translated = text
+    for source_phrase, target_phrase in phrase_replacements.items():
+        translated = translated.replace(source_phrase, target_phrase)
+
     for source_word, target_word in replacements.items():
         translated = translated.replace(source_word, target_word)
 
