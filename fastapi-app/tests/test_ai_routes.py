@@ -62,3 +62,23 @@ def test_translate_subtitle_returns_400_for_invalid_srt() -> None:
 
     assert response.status_code == 400
     assert "Invalid SRT content" in response.json()["detail"]
+
+
+def test_translate_subtitle_handles_case_and_spacing_in_common_phrase(tmp_path) -> None:
+    settings.output_dir = tmp_path
+
+    payload = {
+        "movie_id": "movie-002",
+        "source_language": "en",
+        "target_language": "pt-BR",
+        "subtitle_content": "1\n00:00:01,000 --> 00:00:03,000\nHello, welcome To   the movie.",
+        "format": "srt",
+    }
+
+    response = client.post("/ai/translate-subtitle", json=payload)
+
+    assert response.status_code == 200
+    assert (
+        response.json()["translated_subtitle"]
+        == "1\n00:00:01,000 --> 00:00:03,000\nOlá, bem-vindo ao filme."
+    )
